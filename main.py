@@ -1,4 +1,7 @@
+import ttkbootstrap as ttk
+from ttkbootstrap.constants import*
 from tkinter import*
+import tkinter as tk
 
 W1=Tk()
 W1.config(width=1200, height=900)
@@ -14,7 +17,11 @@ p4=PhotoImage(file="заказы.png")
 p5=PhotoImage(file="заказынаведение.png")
 p6=PhotoImage(file="отзыв.png")
 p7=PhotoImage(file="отзывнаведение.png")
-
+p8=PhotoImage(file="билет.png")
+p9=PhotoImage(file="билетнаведение.png")
+p10=PhotoImage(file="отправить.png")
+p11=PhotoImage(file="отправитьнаведение.png")
+p12=PhotoImage(file="Спасибо.png")
 # Картинка для логотипа (на сайте подсмотрела)
 p3_1 = PhotoImage(file="логотипзаказы.png")
 
@@ -33,8 +40,215 @@ def buy():
     W2.config(width=1200, height=900)
     L2 = Label(W2, image=p2, borderwidth=0)
 
+        def buy3():
+        W5 = Toplevel(W2)
+        W5.config(width=1200, height=900)
+        L5 = Label(W5, image=p8, borderwidth=0)
+
+        def check():
+            W8 = Toplevel(W5)
+            W8.config(width=1200, height=900)
+            L8 = Label(W8, image=p12, borderwidth=0)
+            L8.place(x=-1, y=-1, width=1200, height=900)
+
+            W8.grab_set()
+            W8.mainloop()
+
+        def check1(e):
+            Check['image'] = p11
+
+        def check2(e):
+            Check['image'] = p10
+
+        Check = Button(W5, image=p10, borderwidth=0, command=check)
+        Check.place(x=500, y=500, width=300, height=50)
+        Check.bind('<Enter>', check1)
+        Check.bind('<Leave>', check2)
+
+        def check_input(input_str):
+            for char in input_str:
+                if not char.isalpha():
+                    return False
+            return True
+
+        def on_validate_input(char):
+            if char.isalpha() or char == "":
+                return True
+            else:
+                return False
+
+        vcmd = W5.register(on_validate_input)
+        entry = tk.Entry(W5, validate="key", validatecommand=(vcmd, '%P'))
+        entry.pack()
+
+        entry.config(width=50)  # Ширина окна ввода
+        entry.place(x=400, y=300)  # Положение окна ввода в окне
+
+        entry2 = tk.Entry(W5, validate="key", validatecommand=(vcmd, '%P'))
+        entry2.pack()
+
+        entry2.config(width=50)  # Ширина окна ввода
+        entry2.place(x=400, y=400)  # Положение окна ввода в окне
+
+        LABEL_1 = ttk.Label(W5, anchor=CENTER, font=('Calibri light', '14', 'bold'), text="Введите свои данные", bootstyle=PRIMARY).place(x=400, y=200)
+        LABEL_2 = ttk.Label(W5, anchor=CENTER, font=('Calibri light', '14', 'bold'), text="Фамилия:", bootstyle=PRIMARY).place(x=300, y=300)
+        LABEL_2 = ttk.Label(W5, anchor=CENTER, font=('Calibri light', '14', 'bold'), text="Имя:", bootstyle=PRIMARY).place(x=300, y=400)
+
+        W5.grab_set()
+        W5.mainloop()
+
+    def buy4(e):
+        Buy1['image'] = p9
+
+    def buy5(e):
+        Buy1['image'] = p8
+
+    Buy1 = Button(W2, image=p8, borderwidth=0, command=buy3)
+    Buy1.place(x=200, y=100, width=800, height=200)
+    Buy1.bind('<Enter>', buy4)
+    Buy1.bind('<Leave>', buy5)
+
+    def buy6():
+        W6 = Toplevel(W2)
+        W6.config(width=1200, height=900)
+        L6 = Label(W6, image=p8, borderwidth=0)
+
+        def check():
+            W8 = Toplevel(W6)
+            W8.config(width=1200, height=900)
+            L8 = Label(W8, image=p12, borderwidth=0)
+            L8.place(x=-1, y=-1, width=1200, height=900)
+
+            W8.grab_set()
+            W8.mainloop()
+
+        def check1(e):
+            Check['image'] = p11
+
+        def check2(e):
+            Check['image'] = p10
+
+        Check = Button(W6, image=p10, borderwidth=0, command=check)
+        Check.place(x=500, y=500, width=300, height=50)
+        Check.bind('<Enter>', check1)
+        Check.bind('<Leave>', check2)
+
+        def check_input(input_str):
+            for char in input_str:
+                if not char.isalpha():
+                    return False
+            return True
+
+        def on_validate_input(char):
+            if char.isalpha() or char == "":
+                return True
+            else:
+                return False
+
+        vcmd = W6.register(on_validate_input)
+        entry = tk.Entry(W6, validate="key", validatecommand=(vcmd, '%P'))
+        entry.pack()
+
+        entry.config(width=50)  # Ширина окна ввода
+        entry.place(x=400, y=300)  # Положение окна ввода в окне
+
+        entry2 = tk.Entry(W6, validate="key", validatecommand=(vcmd, '%P'))
+        entry2.pack()
+
+        entry2.config(width=50)  # Ширина окна ввода
+        entry2.place(x=400, y=400)  # Положение окна ввода в окне
+
+        LABEL_1 = ttk.Label(W6, anchor=CENTER, font=('Calibri light', '14', 'bold'), text="Введите свои данные", bootstyle=PRIMARY).place(x=400, y=200)
+        LABEL_2 = ttk.Label(W6, anchor=CENTER, font=('Calibri light', '14', 'bold'), text="Фамилия:", bootstyle=PRIMARY).place(x=300, y=300)
+        LABEL_2 = ttk.Label(W6, anchor=CENTER, font=('Calibri light', '14', 'bold'), text="Имя:", bootstyle=PRIMARY).place(x=300, y=400)
+
+
+        W6.grab_set()
+        W6.mainloop()
+
+    def buy7(e):
+        Buy2['image'] = p9
+
+    def buy8(e):
+        Buy2['image'] = p8
+
+    Buy2 = Button(W2, image=p8, borderwidth=0, command=buy6)
+    Buy2.place(x=200, y=320, width=800, height=200)
+    Buy2.bind('<Enter>', buy7)
+    Buy2.bind('<Leave>', buy8)
+
+    def buy9():
+        W7 = Toplevel(W2)
+        W7.config(width=1200, height=900)
+        L7 = Label(W7, image=p8, borderwidth=0)
+
+        def check():
+            W8 = Toplevel(W7)
+            W8.config(width=1200, height=900)
+            L8 = Label(W8, image=p12, borderwidth=0)
+            L8.place(x=-1, y=-1, width=1200, height=900)
+
+            W8.grab_set()
+            W8.mainloop()
+
+        def check1(e):
+            Check['image'] = p11
+
+        def check2(e):
+            Check['image'] = p10
+
+        Check = Button(W7, image=p10, borderwidth=0, command=check)
+        Check.place(x=500, y=500, width=300, height=50)
+        Check.bind('<Enter>', check1)
+        Check.bind('<Leave>', check2)
+
+        def check_input(input_str):
+            for char in input_str:
+                if not char.isalpha():
+                    return False
+            return True
+
+        def on_validate_input(char):
+            if char.isalpha() or char == "":
+                return True
+            else:
+                return False
+
+        vcmd = W7.register(on_validate_input)
+        entry = tk.Entry(W7, validate="key", validatecommand=(vcmd, '%P'))
+        entry.pack()
+
+        entry.config(width=50)  # Ширина окна ввода
+        entry.place(x=400, y=300)  # Положение окна ввода в окне
+
+        entry2 = tk.Entry(W7, validate="key", validatecommand=(vcmd, '%P'))
+        entry2.pack()
+
+        entry2.config(width=50)  # Ширина окна ввода
+        entry2.place(x=400, y=400)  # Положение окна ввода в окне
+
+        LABEL_1 = ttk.Label(W7, anchor=CENTER, font=('Calibri light', '14', 'bold'), text="Введите свои данные", bootstyle=PRIMARY).place(x=400, y=200)
+        LABEL_2 = ttk.Label(W7, anchor=CENTER, font=('Calibri light', '14', 'bold'), text="Фамилия:", bootstyle=PRIMARY).place(x=300, y=300)
+        LABEL_2 = ttk.Label(W7, anchor=CENTER, font=('Calibri light', '14', 'bold'), text="Имя:", bootstyle=PRIMARY).place(x=300, y=400)
+
+
+        W7.grab_set()
+        W7.mainloop()
+
+    def buy10(e):
+        Buy3['image'] = p9
+
+    def buy11(e):
+        Buy3['image'] = p8
+
+    Buy3 = Button(W2, image=p8, borderwidth=0, command=buy9)
+    Buy3.place(x=200, y=540, width=800, height=200)
+    Buy3.bind('<Enter>', buy10)
+    Buy3.bind('<Leave>', buy11)
+  
     W2.grab_set()
     W2.mainloop()
+
 def buy1(e):
    Buy['image'] = p3
 def buy2(e):
