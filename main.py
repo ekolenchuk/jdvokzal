@@ -1,7 +1,7 @@
-import ttkbootstrap as ttk
-from ttkbootstrap.constants import*
 from tkinter import*
-import tkinter as tk
+import ttkbootstrap as ttk
+from ttkbootstrap.constants import *
+
 
 W1=Tk()
 W1.config(width=1200, height=900)
@@ -22,6 +22,8 @@ p9=PhotoImage(file="билетнаведение.png")
 p10=PhotoImage(file="отправить.png")
 p11=PhotoImage(file="отправитьнаведение.png")
 p12=PhotoImage(file="Спасибо.png")
+p13=PhotoImage(file="спасибозаотзыв.png")
+p14=PhotoImage(file="неввели.png")
 # Картинка для логотипа (на сайте подсмотрела)
 p3_1 = PhotoImage(file="логотипзаказы.png")
 
@@ -319,12 +321,50 @@ Orders.bind('<Enter>', orders1)
 Orders.bind('<Leave>', orders2)
 
 def feedback():
-    W4 = Toplevel(W1)
+   W4 = Toplevel(W1)
     W4.config(width=1200, height=900)
-    L4=Label(W4, image=p6, borderwidth=0)
+    W4.title("ОТЗЫВ")
+    main_text=Label(W4, text="Уважаемые пассажиры!\n"
+                             "Если у вас есть претензии/пожелания по поводу нашей работы или слова благодарности,\n"
+                             "оставьте, пожалуйста, отзыв!\n"
+                             "Мы постараемся учесть ваши слова!", font=('Verdana',16), bg="#ffffff", fg="#ff0000")
+    main_text.place(x=130, y=70)
+    L4 = Label(W4, image=p6, borderwidth=0)
+
+    def otprav():
+        answ = Vvod.get("1.0", "end-1c").strip()  # Получение многострочного текста
+        Vvod.delete("1.0", END)
+
+        if not answ:  # Проверка на пустой ввод
+            Wo1 = Toplevel(W1)
+            Wo1.config(width=486, height=236)
+            Lo1 = Label(Wo1, image=p14, borderwidth=0)
+            Lo1.place(x=0, y=0, width=486, height=236)
+            Wo1.grab_set()
+            Wo1.mainloop()
+        else:
+            Wo2 = Toplevel(W1)
+            Wo2.config(width=486, height=236)
+            Lo2 = Label(Wo2, image=p13, borderwidth=0)
+            Lo2.place(x=0, y=0, width=486, height=236)
+            Wo2.grab_set()
+            Wo2.mainloop()
+
+    Vvod = Text(W4, font=('Calibri light', 32), width=40, height=5)
+    Vvod.place(x=150, y=270)
+
+    Otprav = ttk.Style()
+    Otprav.configure('primary.Outline.TButton', font=('Calibri light', 32))
+
+    Botprav = ttk.Button(W4, text="ОТПРАВИТЬ", style='primary.Outline.TButton', width=20, command=otprav)
+    Botprav.place(x=580, y=570)
+
+
 
     W4.grab_set()
     W4.mainloop()
+
+
 
 def feedback1(e):
     Feedback['image'] = p7
