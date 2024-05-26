@@ -26,15 +26,7 @@ p14 = PhotoImage(file="неввели.png")
 # Картинка для логотипа (на сайте подсмотрела)
 p3_1 = PhotoImage(file="логотипзаказы.png")
 
-# Список купленных билетов. Данные после внесения на втором окне записываются сюда
-# Я пока сама данные придумала для наглядности
-Tickets = [("126548", "Иванов", "Иван", "Семенович", "6217080645", "Екатеринбург - Санкт-Петербург", "12.03.24",
-            "18:46 мск", "12568"),
-           ("135764", "Иванова", "Алевтина", "Михайловна", "6217157956", "Екатеринбург - Перьм", "12.03.24",
-            "18:46 мск", "12568"),
-           ("135764", "Белова", "Лиза", "Антоновна", "6217468756", "Екатеринбург - Перьм", "12.03.24", "18:46 мск",
-            "12568")]
-
+Tickets = []
 
 # окошко купить билеты
 def buy():
@@ -50,6 +42,13 @@ def buy():
         L5.place(x=-1, y=-1, width=1200, height=900)
 
         def check():
+            name = entry.get()
+            entry.delete(0, 'end')
+            num_order = str(random.randint(100000, 999999))
+            surname = entry2.get()
+            entry2.delete(0, 'end')
+            Tickets.append((num_order, surname, name, "", "", "", "", "", ""))
+
             W8 = Toplevel(W5)
             W8.config(width=1200, height=900)
             L8 = Label(W8, image=p12, borderwidth=0)
@@ -74,6 +73,8 @@ def buy():
                 return True
             else:
                 return False
+
+
 
         vcmd = W5.register(on_validate_input)
         entry = ttk.Entry(W5, validate="key", validatecommand=(vcmd, '%P'))
@@ -113,6 +114,13 @@ def buy():
         L6.place(x=-1, y=-1, width=1200, height=900)
 
         def check():
+            name = entry.get()
+            entry.delete(0, 'end')
+            num_order = str(random.randint(100000, 999999))
+            surname = entry2.get()
+            entry2.delete(0, 'end')
+            Tickets.append((num_order, surname, name, "", "", "", "", "", ""))
+
             W8 = Toplevel(W6)
             W8.config(width=1200, height=900)
             L8 = Label(W8, image=p12, borderwidth=0)
@@ -176,6 +184,13 @@ def buy():
         L7.place(x=-1, y=-1, width=1200, height=900)
 
         def check():
+            name = entry.get()
+            entry.delete(0, 'end')
+            num_order = str(random.randint(100000, 999999))
+            surname = entry2.get()
+            entry2.delete(0, 'end')
+            Tickets.append((num_order, surname, name, "", "", "", "", "", ""))
+
             W8 = Toplevel(W7)
             W8.config(width=1200, height=900)
             L8 = Label(W8, image=p12, borderwidth=0)
